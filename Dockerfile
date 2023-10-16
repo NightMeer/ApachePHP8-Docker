@@ -4,7 +4,6 @@ EXPOSE 80
 
 WORKDIR /var/www/html
 
-VOLUME ["/html"]
 VOLUME ["/config"]
 
 COPY ./startup.sh /startup.sh
