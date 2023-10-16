@@ -1,1 +1,3 @@
 PHP8 Apache Docker
+
+docker run --restart unless-stopped -d -p 80:80 -v HOST/PATH/:/config ghcr.io/nightmeer/apachephp8:latest
