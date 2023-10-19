@@ -1,5 +1,5 @@
 FROM php:8-apache
-RUN apt-get update && apt-get upgrade -y && apt-get install -y rsync
+RUN apt-get update && apt-get upgrade -y && apt-get install -y rsync && apt-get install -y libicu-dev && docker-php-ext-configure intl && docker-php-ext-install intl
 EXPOSE 80
 
 WORKDIR /var/www/html
