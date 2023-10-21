@@ -20,7 +20,4 @@ fi
 chmod -R 777 /config/html/
 chmod -R 777 /config/apache2/
 
-while :; do rsync -a --delete /config/html /var/www/; sleep 1; done & apache2ctl -D FOREGROUND
-
-
-
+while :; do rsync -avu --delete /config/html /var/www; rsync -avu --delete /var/www/html /config/; sleep 1; done & apache2ctl -D FOREGROUND

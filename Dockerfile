@@ -1,12 +1,23 @@
-FROM php:8-apache
-RUN apt-get update && apt-get upgrade -y && apt-get install -y rsync && apt-get install -y libicu-dev && docker-php-ext-configure intl && docker-php-ext-install intl && a2enmod rewrite
-EXPOSE 80
+#!/bin/bash
 
-WORKDIR /var/www/html
+if [ ! -d /config/html ]; then
+    echo "HTML NOT Found"
+    cp -R /var/www/html/ /config
+else
+    echo "HTML Found"
+    cp -R /config/html/ /var/www/
+fi
 
-VOLUME ["/config"]
+if [ ! -d /config/apache2 ];
+then
+    echo "CONFIG NOT Found!"
+    cp -R /etc/apache2/ /config
+else
+    echo "CONFIG Found!"
+    cp -R /config/apache2/ /etc/
+fi
 
-COPY ./startup.sh /startup.sh
-CMD chmod 777 /startup.sh
+chmod -R 777 /config/html/
+chmod -R 777 /config/apache2/
 
-ENTRYPOINT "/startup.sh"
+while :; do rsync -au --delete /config/html /var/www; rsync -au --delete /var/www/html /config/; sleep 1; done & apache2ctl -D FOREGROUND
