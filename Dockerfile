@@ -1,5 +1,5 @@
 FROM php:8-apache
-RUN apt-get update && apt-get upgrade -y  && apt-get install -y rsync && apt-get install -y sendmail && apt-get install -y libicu-dev && docker-php-ext-configure intl && docker-php-ext-install intl && docker-php-ext-configure mysqli && docker-php-ext-install mysqli && a2enmod rewrite
+RUN apt-get update && apt-get upgrade -y  && apt-get install -y rsync sendmail libfreetype-dev libjpeg62-turbo-dev libpng-dev libicu-dev zip libzip-dev && docker-php-ext-configure intl && docker-php-ext-install intl && docker-php-ext-configure mysqli && docker-php-ext-install mysqli && docker-php-ext-configure gd --with-freetype --with-jpeg && docker-php-ext-install -j$(nproc) gd && docker-php-ext-configure zip && docker-php-ext-install zip && a2enmod rewrite
 EXPOSE 80
 
 WORKDIR /var/www/html
