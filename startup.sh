@@ -3,20 +3,22 @@
 if [ ! -d /config/apache2 ];
 then
     echo "CONFIG NOT Found!"
-    cp -R /etc/apache2/ /config
+    cp -ru /etc/apache2/ /config
 else
     echo "CONFIG Found!"
-    cp -R /config/apache2/ /etc/
+    cp -ru /config/apache2/ /etc/
+    cp -ru /etc/apache2/ /config    
 fi
 
 if [ ! -d /config/php ];
 then
     echo "CONFIG NOT Found!"
     touch /usr/local/etc/php/php.ini
-    cp -R /usr/local/etc/php/ /config
+    cp -ru /usr/local/etc/php/ /config
 else
     echo "CONFIG Found!"
-    cp -R /config/php/ /usr/local/etc/
+    cp -ru /config/php/ /usr/local/etc/
+    cp -ru /usr/local/etc/php/ /config
 fi
 
 chmod -R 777 /config/php/
