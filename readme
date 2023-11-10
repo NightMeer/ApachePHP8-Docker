@@ -42,6 +42,9 @@ Array
     [34] => intl
     [35] => mysqli
     [36] => pdo_mysql
-    [37] => sodium
-    [38] => zip
+    [37] => pdo_pgsql
+    [38] => pgsql
+    [39] => soap
+    [40] => sodium
+    [41] => zip
 )
