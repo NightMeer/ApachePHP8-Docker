@@ -2,9 +2,8 @@ PHP8 Apache Docker
 
 docker run --restart unless-stopped -d -p 80:80 -v /HOST/PATH/config/:/config -v /HOST/PATH/config/html:/var/www/html ghcr.io/nightmeer/apachephp8:latest
 
-Installed and Loaded PHP Extensions (via get_loaded_extensions()) :
-Array
-(
+Installed and Loaded PHP Extensions (via get_loaded_extensions())
+
     [0] => Core
     [1] => date
     [2] => libxml
@@ -47,4 +46,3 @@ Array
     [39] => soap
     [40] => sodium
     [41] => zip
-)
