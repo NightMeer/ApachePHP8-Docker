@@ -11,10 +11,6 @@ RUN apt-get update && apt-get upgrade -y  \
     && docker-php-ext-configure zip && docker-php-ext-install zip \
     && a2enmod rewrite
 
-#Code for Test install
-#RUN apt-get install -y zip \
-#&& docker-php-ext-configure zip && docker-php-ext-install zip \
-
 EXPOSE 80
 
 WORKDIR /var/www/html
